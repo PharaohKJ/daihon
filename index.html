@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <body>
+
+    <div class="container" ng-app="">
+      <div class="form-group">
+        <label>トラック会場名<input type="text" class="form-control" ng-model="session_name" placeholder="例) a"></label>
+        <label>前半<input type="text" class="form-control" ng-model="session_name1"></label>
+        <label>後半(あれば)<input type="text" class="form-control" ng-model="session_name2"></label>
+      </div>
+
+      <div class="card" ng-show="session_name1">
+        <div class="card-header">
+          <h1>セッション {{session_name1}} 前確認</h1>
+        </div>
+        <div class="card-body">
+          <p ng-show="check1" class="bg-success">登壇者への挨拶</p>
+          <p ng-show="!check1" class="bg-danger">登壇者への挨拶</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check1" /> 済
+            </label>
+          </div>
+
+          <p ng-show="check2" class="bg-success">登壇者にプロジェクタ出力の確認のお願い</p>
+          <p ng-show="!check2" class="bg-danger">登壇者にプロジェクタ出力の確認のお願い</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check2" ng-model="check1" /> 済
+            </label>
+          </div>
+
+          <p ng-show="check3!=1 && check3!=2" class="bg-danger">スライド公開の確認</p>
+          <p ng-show="check3==1" class="bg-success">スライド後日公開</p>
+          <p ng-show="check3==2" class="bg-warning">スライド後日公開なし！</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide" value="1" ng-model="check3" /> スライド後日公開します
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide" value="2" ng-model="check3" /> スライド後日公開しません！
+            </label>
+          </div>
+
+
+          <p ng-show="check4!=1 && check4!=2" class="bg-danger">スライド撮影の確認</p>
+          <p ng-show="check4==1" class="bg-success">スライド撮影の確認 OK (一部不可含む)</p>
+          <p ng-show="check4==2" class="bg-warning">スライド撮影の確認 NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo" value="1" ng-model="check4" /> スライド撮影OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo" value="2" ng-model="check4" /> スライド撮影ダメです
+            </label>
+          </div>
+
+
+          <p ng-show="check5!=1 && check5!=2" class="bg-danger">SNS書き込み OKの確認</p>
+          <p ng-show="check5==1" class="bg-success">SNS書き込み OK (一部不可含む)</p>
+          <p ng-show="check5==2" class="bg-warning">SNS書き込み NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns" value="1" ng-model="check5" /> SNS書き込み OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns" value="2" ng-model="check5" /> SNS書き込みダメです
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="card" ng-show="session_name2">
+        <div class="card-header">
+          <h1>セッション {{session_name2}} 前確認</h1>
+        </div>
+        <div class="card-body">
+          <p ng-show="check21" class="bg-success">登壇者への挨拶</p>
+          <p ng-show="!check21" class="bg-danger">登壇者への挨拶</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check21" /> 済
+            </label>
+          </div>
+
+          <p ng-show="check22" class="bg-success">登壇者にプロジェクタ出力の確認のお願い</p>
+          <p ng-show="!check22" class="bg-danger">登壇者にプロジェクタ出力の確認のお願い</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check22" ng-model="check21" /> 済
+            </label>
+          </div>
+
+          <p ng-show="check23!=1 && check23!=2" class="bg-danger">スライド公開の確認</p>
+          <p ng-show="check23==1" class="bg-success">スライド後日公開</p>
+          <p ng-show="check23==2" class="bg-warning">スライド後日公開なし！</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide2" value="1" ng-model="check23" /> スライド後日公開します
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide2" value="2" ng-model="check23" /> スライド後日公開しません！
+            </label>
+          </div>
+
+
+          <p ng-show="check24!=1 && check24!=2" class="bg-danger">スライド撮影の確認</p>
+          <p ng-show="check24==1" class="bg-success">スライド撮影の確認 OK (一部不可含む)</p>
+          <p ng-show="check24==2" class="bg-warning">スライド撮影の確認 NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo2" value="1" ng-model="check24" /> スライド撮影OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo2" value="2" ng-model="check24" /> スライド撮影ダメです
+            </label>
+          </div>
+
+
+          <p ng-show="check25!=1 && check25!=2" class="bg-danger">SNS書き込み OKの確認</p>
+          <p ng-show="check25==1" class="bg-success">SNS書き込み OK (一部不可含む)</p>
+          <p ng-show="check25==2" class="bg-warning">SNS書き込み NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns2" value="1" ng-model="check25" /> SNS書き込み OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns2" value="2" ng-model="check25" /> SNS書き込みダメです
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <hr/>
+
+
+
+      <div class="card" ng-show="session_name1">
+        <div class="card-header">
+          <h1>セッション {{session_name1}} <span ng-show="session_name2">{{session_name2}}</span> 台本</h1>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">開始前</h4>
+          <ul class="h5">
+            <hr/>
+            <li>本トラックは{{session_name1}}<span ng-show="session_name2">及び{{session_name2}}</span>のセッションです。</li>
+            <hr/>
+            <li ng-show="check3==1">本セッションは後日、スライド共有サイトや登壇者ブログなどで公開が予定されています。</li>
+            <hr/>
+            <li ng-show="check4==1">本セッションで講演資料を撮影する場合、シャッター音やフラッシュにご配慮いただくようお願いいたします。また、撮影不可のスライドがある場合は、登壇者より指示がありますので従いください。</li>
+            <hr/>
+            <li ng-show="check4==2">本セッションでは、撮影スタッフ・関係者以外の写真の撮影、動画の録画、音声の録音は禁止しています。</li>
+            <hr/>
+            <li ng-show="check5==1">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを推奨しております。SNS の書き込みを行う場合は、ハッシュタグ#jd2018_{{session_name | lowercase}}を付けて書き込んでいただけるようお願いいたします。一部、SNS への書き込み禁 止がある場合は登壇者より指示がありますので従いください。</li>
+            <hr/>
+            <li ng-show="check5==2">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを禁止しています。</li>
+            <hr/>
+            <li>それでは開演まで今しばらくお待ちください。</li>
+            <hr/>
+            <li>(上記時間まで繰り返しアナウンスをお願いします)</li>
+            <hr/>
+          </ul>
+          <h2 class="card-title">{{session_name1}} 開始</h2>
+          <ul class="h5">
+            <hr/>
+            <li>それでは{{session_name1}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
+            <hr/>
+          </ul>
+          <div ng-show="session_name2">
+            <h2 class="card-title">{{session_name2}} 開始</h2>
+            <ul class="h5">
+              <li>ありがとうございました。</li>
+              <hr/>
+              <li>続きまして{{session_name2}}です。</li>
+              <hr/>
+              <li ng-show="check23==1">本セッションは後日、スライド共有サイトや登壇者ブログなどで公開が予定されています。</li>
+              <hr/>
+              <li ng-show="check24==1">本セッションで講演資料を撮影する場合、シャッター音やフラッシュにご配慮いただくようお願いいたします。また、撮影不可のスライドがある場合は、登壇者より指示がありますので従いください。</li>
+              <hr/>
+              <li ng-show="check24==2">本セッションでは、撮影スタッフ・関係者以外の写真の撮影、動画の録画、音声の録音は禁止しています。</li>
+              <hr/>
+              <li ng-show="check25==1">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを推奨しております。SNS の書き込みを行う場合は、ハッシュタグ#jd2018_{{session_name | lowercase}}を付けて書き込んでいただけるようお願いいたします。一部、SNS への書き込み禁 止がある場合は登壇者より指示がありますので従いください。</li>
+              <hr/>
+              <li ng-show="check25==2">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを禁止しています。</li>
+              <hr/>
+              <li>それでは{{session_name2}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
+              <hr/>
+            </ul>
+          </div>
+          <h2 class="card-title">セッション終了</h2>
+          <div>
+            <ul class="h5">
+              <li>ありがとうございました。本セッションは以上になります。 最後に登壇者への拍手をお願いいたします。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
