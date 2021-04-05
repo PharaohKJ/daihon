@@ -14,8 +14,21 @@
     <div class="container" ng-app="">
       <div class="form-group">
         <label>トラック会場名<input type="text" class="form-control" ng-model="session_name" placeholder="例) a"></label>
-        <label>前半<input type="text" class="form-control" ng-model="session_name1"></label>
-        <label>後半(あれば)<input type="text" class="form-control" ng-model="session_name2"></label>
+      </div>
+      <div class="form-group">
+        <h3>1</h3>
+        <label>1つめのセッション名<input type="text" class="form-control" ng-model="session_name1"></label>
+        <label>1つめの登壇者名<input type="text" class="form-control" ng-model="session_player1"></label>
+      </div>
+      <div class="form-group">
+        <h3>2</h3>
+        <label>2つめのセッション名<input type="text" class="form-control" ng-model="session_name2"></label>
+        <label>2つめの登壇者名<input type="text" class="form-control" ng-model="session_player2"></label>
+      </div>
+      <div class="form-group">
+        <h3>3</h3>
+        <label>3つめのセッション名<input type="text" class="form-control" ng-model="session_name3"></label>
+        <label>3つめの登壇者名<input type="text" class="form-control" ng-model="session_player3"></label>
       </div>
 
       <div class="card" ng-show="session_name1">
@@ -158,17 +171,85 @@
 
       <hr/>
 
+      <div class="card" ng-show="session_name3">
+        <div class="card-header">
+          <h1>セッション {{session_name3}} 前確認</h1>
+        </div>
+        <div class="card-body">
+          <p ng-show="check31" class="bg-success">登壇者への挨拶</p>
+          <p ng-show="!check31" class="bg-danger">登壇者への挨拶</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check31" /> 済
+            </label>
+          </div>
 
+          <p ng-show="check32" class="bg-success">登壇者にプロジェクタ出力の確認のお願い</p>
+          <p ng-show="!check32" class="bg-danger">登壇者にプロジェクタ出力の確認のお願い</p>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="check32" ng-model="check31" /> 済
+            </label>
+          </div>
+
+          <p ng-show="check33!=1 && check33!=2" class="bg-danger">スライド公開の確認</p>
+          <p ng-show="check33==1" class="bg-success">スライド後日公開</p>
+          <p ng-show="check33==2" class="bg-warning">スライド後日公開なし！</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide3" value="1" ng-model="check33" /> スライド後日公開します
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="slide3" value="2" ng-model="check33" /> スライド後日公開しません！
+            </label>
+          </div>
+
+
+          <p ng-show="check34!=1 && check34!=2" class="bg-danger">スライド撮影の確認</p>
+          <p ng-show="check34==1" class="bg-success">スライド撮影の確認 OK (一部不可含む)</p>
+          <p ng-show="check34==2" class="bg-warning">スライド撮影の確認 NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo3" value="1" ng-model="check34" /> スライド撮影OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="photo3" value="2" ng-model="check34" /> スライド撮影ダメです
+            </label>
+          </div>
+
+
+          <p ng-show="check35!=1 && check35!=2" class="bg-danger">SNS書き込み OKの確認</p>
+          <p ng-show="check35==1" class="bg-success">SNS書き込み OK (一部不可含む)</p>
+          <p ng-show="check35==2" class="bg-warning">SNS書き込み NG!</p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns3" value="1" ng-model="check35" /> SNS書き込み OKです(一部不可含む)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sns3" value="2" ng-model="check35" /> SNS書き込みダメです
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <hr/>
 
       <div class="card" ng-show="session_name1">
         <div class="card-header">
-          <h1>セッション {{session_name1}} <span ng-show="session_name2">{{session_name2}}</span> 台本</h1>
+          <h1>{{session_name1}} <span ng-show="session_name2">{{session_name2}}</span> <span ng-show="session_name3">{{session_name3}}</span> 台本</h1>
         </div>
         <div class="card-body">
           <h4 class="card-title">開始前</h4>
           <ul class="h5">
             <hr/>
-            <li>本トラックは{{session_name1}}<span ng-show="session_name2">及び{{session_name2}}</span>のセッションです。</li>
+            <li>本トラックは{{session_name1}}<span ng-show="session_name2">及び{{session_name2}}</span><span ng-show="session_name3">及び{{session_name3}}</span>のセッションです。</li>
             <hr/>
             <li ng-show="check3==1">本セッションは後日、スライド共有サイトや登壇者ブログなどで公開が予定されています。</li>
             <hr/>
@@ -180,6 +261,8 @@
             <hr/>
             <li ng-show="check5==2">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを禁止しています。</li>
             <hr/>
+            <li>尚、撮影スタッフが記録のための撮影を行なっております。スナップ写真などに皆さまが写りこむことがありますので、予めご了承ください。 </li>
+            <hr/>
             <li>それでは開演まで今しばらくお待ちください。</li>
             <hr/>
             <li>(上記時間まで繰り返しアナウンスをお願いします)</li>
@@ -188,7 +271,7 @@
           <h2 class="card-title">{{session_name1}} 開始</h2>
           <ul class="h5">
             <hr/>
-            <li>それでは{{session_name1}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
+            <li>それでは{{session_player1}}さんによる{{session_name1}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
             <hr/>
           </ul>
           <div ng-show="session_name2">
@@ -196,7 +279,7 @@
             <ul class="h5">
               <li>ありがとうございました。</li>
               <hr/>
-              <li>続きまして{{session_name2}}です。</li>
+              <li>続きまして{{session_player2}}さんによる{{session_name2}}です。</li>
               <hr/>
               <li ng-show="check23==1">本セッションは後日、スライド共有サイトや登壇者ブログなどで公開が予定されています。</li>
               <hr/>
@@ -208,7 +291,28 @@
               <hr/>
               <li ng-show="check25==2">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを禁止しています。</li>
               <hr/>
-              <li>それでは{{session_name2}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
+              <li>それでは{{session_player2}}さんによる{{session_name2}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
+              <hr/>
+            </ul>
+          </div>
+          <div ng-show="session_name3">
+            <h2 class="card-title">{{session_name3}} 開始</h2>
+            <ul class="h5">
+              <li>ありがとうございました。</li>
+              <hr/>
+              <li>続きまして{{session_player3}}さんによる{{session_name3}}です。</li>
+              <hr/>
+              <li ng-show="check33==1">本セッションは後日、スライド共有サイトや登壇者ブログなどで公開が予定されています。</li>
+              <hr/>
+              <li ng-show="check34==1">本セッションで講演資料を撮影する場合、シャッター音やフラッシュにご配慮いただくようお願いいたします。また、撮影不可のスライドがある場合は、登壇者より指示がありますので従いください。</li>
+              <hr/>
+              <li ng-show="check34==2">本セッションでは、撮影スタッフ・関係者以外の写真の撮影、動画の録画、音声の録音は禁止しています。</li>
+              <hr/>
+              <li ng-show="check35==1">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを推奨しております。SNS の書き込みを行う場合は、ハッシュタグ#jd2018_{{session_name | lowercase}}を付けて書き込んでいただけるようお願いいたします。一部、SNS への書き込み禁 止がある場合は登壇者より指示がありますので従いください。</li>
+              <hr/>
+              <li ng-show="check35==2">本セッションでは、登壇内容の Twitter、Facebook など SNS への書き込みを禁止しています。</li>
+              <hr/>
+              <li>それでは{{session_player3}}さんによる{{session_name3}}の開始です。よろしくお願いします。皆さま、拍手でお迎えください。</li>
               <hr/>
             </ul>
           </div>
